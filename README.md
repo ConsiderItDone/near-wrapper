@@ -82,7 +82,7 @@ Examples of near-wrapper usage
 
 ```js
 const transactionResult = await client.invoke({
-  uri: "wrap://near.polywrap.eth",
+  uri: "wrap://ens/near.polywrap.eth",
   method: "sendMoney",
   args: {
     receiverId: <RECEIVER_ID>,
@@ -97,7 +97,7 @@ const transactionResult = await client.invoke({
 
 ```js
 const transaction = await client.invoke({
-  uri: "wrap://near.polywrap.eth",
+  uri: "wrap://ens/near.polywrap.eth",
   method: "createTransaction",
   args: {
     publicKey: <PUBLIC_KEY>, // your public key
@@ -109,7 +109,7 @@ const transaction = await client.invoke({
 #### 2. Sign Transaction
 ```js
   const signedTransaction = await client.invoke({
-    uri: "wrap://near.polywrap.eth",
+    uri: "wrap://ens/near.polywrap.eth",
     method: "signTransaction",
     args: {
       transaction,
@@ -119,10 +119,20 @@ const transaction = await client.invoke({
 #### 3. Send Transaction
 ```js
   const transactionResult = await client.invoke({
-    uri: "wrap://near.polywrap.eth",
+    uri: "wrap://ens/near.polywrap.eth",
     method: "sendTransaction",
     args: {
       signedTx: signedTransaction,
+    },
+  });
+```
+#### 4. Check balance
+```js
+  const transactionResult = await client.invoke({
+    uri: "wrap://ens/near.polywrap.eth",
+    method: "getAccountBalance",
+    args: {
+      accountId: <ACCOUNT_ID>,
     },
   });
 ```
@@ -137,7 +147,7 @@ In case you want mannualy serialize/deserialize transactions, borsh-wrapper prov
 Serialize
 ```js
     const transactionBytes = await client.invoke({
-      uri: "wrap://near.borsh.polywrap.eth",
+      uri: "wrap://ens/near.borsh.polywrap.eth",
       method: "serializeTransaction",
       args: {
         transaction: transaction,
@@ -148,7 +158,7 @@ Serialize
 Deserialize:
 ```js
     const transaction = await client.invoke({
-      uri: "wrap://near.borsh.polywrap.eth",
+      uri: "wrap://ens/near.borsh.polywrap.eth",
       method: "deserializeTransaction",
       args: {
         transactionBytes: transactionBytes,
@@ -159,7 +169,7 @@ Deserialize:
 Serialize signed transaction:
 ```js
     const signedTransactionBytes = await client.invoke({
-      uri: "wrap://near.borsh.polywrap.eth",
+      uri: "wrap://ens/near.borsh.polywrap.eth",
       method: "serializeTransaction",
       args: {
         signedTransaction: signedTransaction,
@@ -170,7 +180,7 @@ Serialize signed transaction:
 Deserialize signed transaction:
 ```js
     const signedTransaction = await client.invoke({
-      uri: "wrap://near.borsh.polywrap.eth",
+      uri: "wrap://ens/near.borsh.polywrap.eth",
       method: "deserializeTransaction",
       args: {
         signedTxBytes: signedTransactionBytes,
