@@ -1,0 +1,39 @@
+
+name: CI
+
+on: [pull_request]
+
+jobs:
+  CI:
+    name: CI
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+
+    # NEAR
+      - name: (NEAR Plugin) Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: near-nvm
+        working-directory: ./plugin-js
+
+      - name: (NEAR Plugin) Setup Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: '${{ steps.near-nvm.outputs.NVMRC }}'
+#        working-directory: ./near/wrapper
+
+      - name: (NEAR Plugin) Install dependencies
+        run: yarn install --nonInteractive --frozen-lockfile --prefer-offline
+        working-directory: ./plugin-js
+
+      - name: (NEAR Plugin) Build
+        run: yarn build
+        working-directory: ./plugin-js
+
+      - name: (NEAR Plugin) Test
+        working-directory: ./plugin-js
+        run: yarn test
+    #
