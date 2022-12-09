@@ -1,8 +1,8 @@
-# Near Wrapper (Limited)
-A limited (i.e. not fully-featured) implementation of a Near polywrapper.
+# Near Wrapper 
+Implementation of a Near polywrapper.
 
 # Near Plugin
-The Near wrapper depends on the [Near Polywrap plugin](https://www.npmjs.com/package/near-polywrap-js).
+The Near wrapper depends on the [Near Polywrap plugin](https://www.npmjs.com/package/@cidt/near-plugin-js).
 
 # How To Run
 
