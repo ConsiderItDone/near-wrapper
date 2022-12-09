@@ -3,15 +3,15 @@ A plugin to support the Near polywrapper. The Near wrapper depends on the Near J
 
 # Installation
 
-Yarn installation: `yarn add near-polywrap-js`
+Yarn installation: `yarn add @cidt/near-plugin-js`
 
-or with NPM: `npm install near-polywrap-js`
+or with NPM: `npm install @cidt/near-plugin-js`
 
 # How to use
 
 Set up your Near config.
 ```typescript
-import { KeyPair, KeyStores, NearPluginConfig } from "near-polywrap-js";
+import { KeyPair, KeyStores, NearPluginConfig } from "@cidt/near-plugin-js";
 
 export async function setUpTestConfig(): Promise<NearPluginConfig> {
   const keyStore = new KeyStores.InMemoryKeyStore();
@@ -31,10 +31,9 @@ const nearConfig = setUpTestConfig();
 
 Then add the plugin to the Polywrap Client configuration.
 ```typescript
-client = new Web3ApiClient({
-  plugins: [
-    {
-      uri: "w3://ens/nearPlugin.web3api.eth",
+const client = new PolywrapClient({
+  plugins: [{
+      uri: "wrap://ens/nearPlugin.web3api.eth",
       plugin: nearPlugin(nearConfig)
     }
   ]
