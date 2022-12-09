@@ -1,4 +1,4 @@
-import { NearPluginConfig } from "../../../../plugin-js";
+import { NearPluginConfig } from "../../../../plugin-js/build";
 import {
   BlockChangeResult,
   NearProtocolConfig,

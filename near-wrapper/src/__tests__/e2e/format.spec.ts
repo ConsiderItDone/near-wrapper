@@ -1,4 +1,4 @@
-import { NearPluginConfig } from "../../../../plugin-js"; //TODO change to appropriate package
+import { NearPluginConfig } from "../../../../plugin-js/build"; //TODO change to appropriate package
 import * as testUtils from "../testUtils";
 
 import { PolywrapClient } from "@polywrap/client-js";

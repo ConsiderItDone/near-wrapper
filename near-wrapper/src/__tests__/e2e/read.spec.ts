@@ -1,11 +1,11 @@
-import { NearPluginConfig } from "../../../../plugin-js"; //TODO change to appropriate package
+import { NearPluginConfig } from "../../../../plugin-js/build"; //TODO change to appropriate package
 import {
   BlockReference,
   AccountView,
   PublicKey,
   AccessKeyInfo,
-} from "./../tsTypes";
-import * as testUtils from "./../testUtils";
+} from "../tsTypes";
+import * as testUtils from "../testUtils";
 import { ContractStateResult, ViewContractCode } from "../../wrap";
 
 import { PolywrapClient } from "@polywrap/client-js";

@@ -4,7 +4,7 @@ import {
   KeyPair,
   KeyStores,
   NearPluginConfig,
-} from "../../../plugin-js";
+} from "../../../plugin-js/build";
 import { KeyTypeEnum, PublicKey } from "./tsTypes";
 
 import { ClientConfig } from "@polywrap/client-js";

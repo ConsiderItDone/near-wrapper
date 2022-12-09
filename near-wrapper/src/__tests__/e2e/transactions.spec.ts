@@ -5,7 +5,7 @@ import {
   Action,
 } from "../tsTypes";
 import * as testUtils from "../testUtils";
-import { NearPluginConfig } from "../../../../plugin-js";
+import { NearPluginConfig } from "../../../../plugin-js/build";
 
 import * as nearApi from "near-api-js";
 import { PolywrapClient } from "@polywrap/client-js";

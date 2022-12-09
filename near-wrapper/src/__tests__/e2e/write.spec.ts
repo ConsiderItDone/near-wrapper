@@ -1,6 +1,6 @@
 import * as testUtils from "../testUtils";
 import { Interface_FinalExecutionOutcome as Near_FinalExecutionOutcome } from "../../wrap";
-import { KeyPair, NearPluginConfig } from "../../../../plugin-js"; //TODO change to appropriate package
+import { KeyPair, NearPluginConfig } from "../../../../plugin-js/build"; //TODO change to appropriate package
 
 import { PolywrapClient } from "@polywrap/client-js";
 import * as nearApi from "near-api-js";

@@ -6,7 +6,6 @@
   "scripts": {
     "prettier-format": "npx prettier --write ./src",
     "reset": "yarn clean && yarn && yarn build",
-    "postinstall": "patch-package",
     "clean": "npx rimraf ./node_modules ./build ./coverage ./.w3 ./**/w3",
     "build": "npx polywrap build",
     "codegen": "npx polywrap codegen",
@@ -48,7 +47,6 @@
     "jest": "27.0.6",
     "near-api-js": "0.44.2",
     "near-hello": "0.5.1",
-    "patch-package": "6.4.7",
     "polywrap": "0.2.0",
     "postinstall-postinstall": "2.1.0",
     "prettier": "2.2.1",
