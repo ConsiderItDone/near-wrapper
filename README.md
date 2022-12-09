@@ -126,3 +126,55 @@ const transaction = await client.invoke({
     },
   });
 ```
+
+
+## <a name="borsh-wrapper">Borsh Wrapper Reference</a>
+Near wrapper uses wrapper borsh-serializer to serialize/deserialize transaction
+In case you want mannualy serialize/deserialize transactions, borsh-wrapper provides methods `serializeTransaction`, `deserializeTransaction`, `serializeSignedTransaction`, `deserializeSignedTransaction`
+
+### Examples:
+
+Serialize
+```js
+    const transactionBytes = await client.invoke({
+      uri: "wrap://near.borsh.polywrap.eth",
+      method: "serializeTransaction",
+      args: {
+        transaction: transaction,
+      },
+    });
+```
+
+Deserialize:
+```js
+    const transaction = await client.invoke({
+      uri: "wrap://near.borsh.polywrap.eth",
+      method: "deserializeTransaction",
+      args: {
+        transactionBytes: transactionBytes,
+      },
+    });
+```
+
+Serialize signed transaction:
+```js
+    const signedTransactionBytes = await client.invoke({
+      uri: "wrap://near.borsh.polywrap.eth",
+      method: "serializeTransaction",
+      args: {
+        signedTransaction: signedTransaction,
+      },
+    });
+```
+
+Deserialize signed transaction:
+```js
+    const signedTransaction = await client.invoke({
+      uri: "wrap://near.borsh.polywrap.eth",
+      method: "deserializeTransaction",
+      args: {
+        signedTxBytes: signedTransactionBytes,
+      },
+    });
+```
+
