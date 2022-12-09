@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "scripts": {
     "prettier-format": "npx prettier --write ./src",
+    "postinstall": "patch-package",
     "reset": "yarn clean && yarn && yarn build",
     "clean": "npx rimraf ./node_modules ./build ./coverage ./.w3 ./**/w3",
     "build": "npx polywrap build",
@@ -28,7 +29,8 @@
     "as-bignum": "^0.2.23",
     "as-fraction": "0.2.0",
     "localstorage-polyfill": "1.0.1",
-    "mock-browser": "0.92.14"
+    "mock-browser": "0.92.14",
+    "patch-package": "^6.5.0"
   },
   "devDependencies": {
     "@polywrap/client-js": "0.2.0",
