@@ -137,6 +137,8 @@ const transaction = await client.invoke({
   });
 ```
 
+All available method you can check at [wrapper schema](https://github.com/ConsiderItDone/near-wrapper/blob/main/near-wrapper/src/schema.graphql)
+
 
 ## <a name="borsh-wrapper">Borsh Wrapper Reference</a>
 Near wrapper uses wrapper borsh-serializer to serialize/deserialize transaction
