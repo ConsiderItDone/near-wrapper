@@ -1,29 +1,49 @@
-
 name: CI
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   CI:
-    name: CI
+    name: Near CI
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      # NEAR borsh-wrapper
+      - name: (NEAR Borsh wrapper) Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: near-borsh-wrapper-nvm
+        working-directory: ./borsh-wrapper
 
-    # NEAR
+      - name: (NEAR Borsh wrapper) Setup Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: '${{ steps.near-borsh-wrapper-nvm.outputs.NVMRC }}'
+
+      - name: (NEAR Borsh wrapper) Install dependencies
+        run: yarn install --nonInteractive --frozen-lockfile --prefer-offline
+        working-directory: ./borsh-wrapper
+
+      - name: (NEAR Borsh wrapper) Build
+        run: yarn build
+        working-directory: ./borsh-wrapper
+
+      # NEAR plugin
       - name: (NEAR Plugin) Read .nvmrc
         run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-        id: near-nvm
+        id: near-plugin-nvm
         working-directory: ./plugin-js
 
       - name: (NEAR Plugin) Setup Node.js
         uses: actions/setup-node@master
         with:
-          node-version: '${{ steps.near-nvm.outputs.NVMRC }}'
-#        working-directory: ./near/wrapper
+          node-version: '${{ steps.near-plugin-nvm.outputs.NVMRC }}'
 
       - name: (NEAR Plugin) Install dependencies
         run: yarn install --nonInteractive --frozen-lockfile --prefer-offline
@@ -34,6 +54,28 @@ jobs:
         working-directory: ./plugin-js
 
       - name: (NEAR Plugin) Test
-        working-directory: ./plugin-js
         run: yarn test
-    #
+        working-directory: ./plugin-js
+
+      # NEAR wrapper
+      - name: (NEAR Wrapper) Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: near-wrapper-nvm
+        working-directory: ./near-wrapper
+
+      - name: (NEAR Wrapper) Setup Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: '${{ steps.near-wrapper-nvm.outputs.NVMRC }}'
+
+      - name: (NEAR Wrapper) Install dependencies
+        run: yarn install --nonInteractive --frozen-lockfile --prefer-offline
+        working-directory: ./near-wrapper
+
+      - name: (NEAR Wrapper) Build
+        run: yarn build
+        working-directory: ./near-wrapper
+
+      - name: (NEAR Wrapper) Test
+        run: yarn test
+        working-directory: ./near-wrapper
